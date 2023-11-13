@@ -3,10 +3,17 @@ import logo from "../../assets/logos/logo.png"
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProviders";
 const Navbar = () => {
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
+    const handleLogOut = () => {
+        logOut()
+            .then((result) => {
 
+            }).catch(error => {
+                console.log(error);
+            })
+    }
     return (
-        <div className="navbar bg-teal-400 text-white ">
+        <div className="navbar bg-slate-700	 text-white ">
             <div className="navbar-start">
                 <div className="dropdown">
                     <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -34,7 +41,7 @@ const Navbar = () => {
             <div className="navbar-end flex flex-column">
                 {
                     !user ? <><Link to='/login' className="text-white mx-3 font-bold">Login</Link>
-                        <Link to="/register" className="text-white font-bold">Register</Link ></> : <><h3>{user?.displayName}</h3>  <button className="btn bg-red-600 text-white mx-1 hover:bg-indigo-600">Logout</button></>
+                        <Link to="/register" className="text-white font-bold">Register</Link ></> : <><h3>{user?.displayName}</h3>  <button onClick={handleLogOut} className="btn bg-red-600 text-white mx-1 hover:bg-indigo-600">Logout</button></>
                 }
 
             </div>
