@@ -1,14 +1,19 @@
+import { Link } from "react-router-dom";
 
 const Login = () => {
+    const handleLogin = (e) => {
+        e.preventDefault()
+    }
+
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row-reverse">
                 <div className="text-center lg:text-left">
                     <h1 className="text-5xl text-purple-700 font-bold">Login now!</h1>
-
+                    <Link to="/admin" className="text-indigo-800 font-bold">Admin Login</Link>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form onSubmit={handleLogin} className="card-body">
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
